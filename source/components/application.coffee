@@ -25,7 +25,7 @@ class Application extends Component
       ])
       UI.Page.promise({name: 'login', active: 'true'},[
         UI.promiseElement('div',{class: 'center'},[
-          UI.promiseElement('img',{src: '/assets/icon.png'})
+          UI.promiseElement('img',{src: 'icon.png'})
           UI.promiseElement('h1',{},['Shoppy'])
           {login: Login.promise()}
         ])

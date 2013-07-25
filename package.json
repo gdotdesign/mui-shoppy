@@ -1,0 +1,32 @@
+{
+  "name": "mui-shoppy",
+  "version": "0.1.0",
+  "description": "Shoppy (MUI Exmaple Application)",
+  "homepage": "http://m-ui.org",
+  "license": "MIT",
+  "contributors": [{
+    "name": "Szikszai Gusztáv",
+    "email": "guszti5@hotmail.com"
+  }],
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/gdotdesign/mui-shoppy.git"
+  },
+  "bugs": {
+    "url" : "http://github.com/gdotdesign/mui-shoppy/issues"
+  },
+  "dependencies" : {
+    "coffee-script"       : "1.6.3",
+    "node-sass"           : "0.5.2",
+    "mincer"              : "0.4.6",
+    "connect"             : "2.8.3",
+    "autoprefixer"        : "0.5.20130629"
+  },
+  "scripts": {
+    "test": "casperjs test/test.coffee",
+    "start": "coffee server.coffee"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}

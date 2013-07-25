@@ -1,0 +1,398 @@
+body {
+  background: #eee;
+  color: #333;
+  font-family: Ubuntu, sans-serif
+}
+
+.center {
+  width: 100%;
+  position: absolute;
+  height: 360px;
+  top: 50%;
+  transform: translateY(-50%)
+}
+[toggled] {
+  transform: perspective(100px) rotateY(180deg);
+  text-decoration: line-through;
+}
+ui-button[type=warning]:not([toggled]){
+  transform-origin: 50% 0;
+  transform: perspective(100px);
+}
+
+[name=login] {
+  z-index: 9999;
+}
+ui-pager {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+}
+ui-application[loading] {
+  h1, img {
+    transform: translateY(100px)
+  }
+  ui-login {
+    opacity: 0;
+  }
+}
+
+h1, img {
+  transform: translateY(0);
+  transition: 1s;
+}
+ui-option {
+  line-height: 45px;
+  height: 45px;
+}
+ui-option[selected] {
+  background-image: none;
+  box-shadow: none;
+}
+ui-login {
+  opacity: 1;
+  display: block;
+  transition: 1s 0.5s;
+}
+ui-dropdown[open] {
+  background: #333;
+  max-height: 580px;
+}
+ui-application {
+  border-left: 1px solid #ccc;
+  background: #eee;
+  max-width: 500px;
+  border-right: 1px solid #ccc;
+  margin: 0 auto;
+}
+img {
+  margin: 0px auto;
+  display: block;
+  width: 80px;
+  margin-bottom: 10px;
+}
+h1 {
+  margin: 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+ui-page {
+  color: #333;
+  ui-form {
+    height: 100%
+  }
+}
+*:focus {
+  box-shadow: none !important;
+}
+*::-webkit-input-placeholder {
+  line-height: 22px;
+  color: #bbb;
+}
+ui-email, input[type=password], ui-text, ui-number {
+  box-shadow: none;
+  height: 54px;
+  font-size: 18px;
+  padding: 20px;
+  border-radius: 2px;
+  transition: 320ms;
+  border: none;
+  &:after {
+    font-size: 18px;
+  }
+  &:focus {
+    box-shadow: none;
+  }
+  &[invalid], &[valid] {
+    box-shadow: none;
+    border: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+  &[invalid] {
+    border-color: #C0392B;
+  }
+  &[valid] {
+    border-color: #27AE60;
+  }
+}
+ui-form {
+  border: none;
+  background: none;
+  box-shadow: none;
+  ui-button {
+    position: relative;
+    //overflow: hidden;
+    div,span {
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    &[loading]{
+      div{
+        opacity: 1;
+      }
+      span {
+        opacity: 0;
+      }
+    }
+    &:not([loading]){
+      div{
+        opacity: 0;
+      }
+      span {
+        opacity: 1;
+      }
+    }
+    height: 50px;
+    border-radius: 2px;
+    width: 49%;
+    text-align: center;
+    box-shadow: none;
+    font-size: 16px;
+    line-height: 50px;
+    &:first-of-type {
+      margin-right: 2%;
+    }
+    &[disabled] {
+      opacity: 1;
+      background: #999;
+    }
+  }
+}
+
+.icon-sign-blank {
+  border-right: 1px solid rgba(#000,0.1);
+  border-left:  1px solid rgba(#000,0.1);
+}
+
+ui-application {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+}
+ui-dropdown {
+  margin-top: 0;
+  border-radius: 0;
+  ui-option {
+    border-radius: 0 !important;
+  }
+}
+
+.body:empty {
+  background: none;
+  text-align: center;
+  &:after {
+    padding-top: 40px;
+    display: block;
+    color: #aaa;
+    content: "Nothing to shop for :(";
+    font-size: 20px;
+  }
+}
+
+ui-select, ui-button {
+  line-height: inherit;
+  height: inherit;
+  text-shadow: none;
+  background-image: none;
+  border-radius: 0;
+}
+ui-list {
+  display: block;
+}
+ui-list div:first-child {
+  background: #333;
+  height: 45px;
+  line-height: 45px;
+  ui-button, ui-select {
+    box-shadow: none;
+  }
+  ui-button {
+    float: right;
+    padding: 0;
+    width: 45px;
+    font-size: 16px;
+    text-align: center;
+    &:nth-of-type(1){
+      float: left;
+      transform: scaleX(-1)
+    }
+    &:nth-of-type(2){
+      width: 45px;
+    }
+  }
+
+  ui-select {
+    position: absolute;
+    font-size: 16px;
+    left: 45px;
+    right: 90px;
+  }
+}
+
+ui-item[category="food"] .icon-sign-blank:before{
+  content: "\f0f5";
+  color: #F39C12;
+}
+ui-item[category="drink"] .icon-sign-blank:before{
+  content: "\f000";
+  color: #2980B9;
+}
+ui-item[category="gift"] .icon-sign-blank:before{
+  content: "\f06b";
+  color: #8E44AD;
+}
+ui-item[category="storage"] .icon-sign-blank:before{
+  content: "\f187";
+  color: #2C3E50;
+}
+ui-item[category="favorite"] .icon-sign-blank:before{
+  content: "\f004";
+  color: #C0392B;
+}
+ui-item[category="electronics"] .icon-sign-blank:before{
+  content: "\f108";
+  color: #27AE60;
+}
+ui-item[category="games"] .icon-sign-blank:before{
+  content: "\f11b";
+  color: #16A085;
+}
+
+ui-list div:last-child {
+  background-size: auto 90px;
+  background-image: linear-gradient(#f9f9f9, #f9f9f9 50%, #f3f3f3 50%, #f3f3f3)
+}
+ui-list[filtered] ui-item[done] {
+  display: none;
+}
+ui-list[category="drink"] ui-item:not([category="drink"]){
+  display: none;
+}
+ui-list[category="food"] ui-item:not([category="food"]){
+  display: none;
+}
+ui-list[category="gift"] ui-item:not([category="gift"]){
+  display: none;
+}
+ui-list[category="electronics"] ui-item:not([category="electronics"]){
+  display: none;
+}
+ui-list[category="games"] ui-item:not([category="games"]){
+  display: none;
+}
+ui-list[category="storage"] ui-item:not([category="storage"]){
+  display: none;
+}
+ui-list[category="favorite"] ui-item:not([category="favourite"]){
+  display: none;
+}
+
+ui-item {
+  display: block;
+  transition: 320ms;
+  height: 45px;
+  line-height: 45px;
+  font-size: 18px;
+  box-shadow: 0 -1px 1px rgba(0,0,0,0.1) inset;
+  &[done] {
+    color: #ccc;
+    ui-label:nth-of-type(2):not(:empty)  {
+      color: #ddd;
+    }
+    i:not(.icon-remove) {
+      opacity: 0.5;
+    }
+    .icon-remove {
+      border-left-color: rgba(#000,0.1);
+      color: inherit;
+    }
+  }
+  ui-label:nth-of-type(1){
+    padding-left: 10px
+  }
+  ui-label:nth-of-type(2):not(:empty){
+    color: #aaa;
+    transition: 320ms;
+    margin-left: 5px;
+    &:before {content: "("}
+    &:after {content: ")"}
+  }
+  i[class^=icon] {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 45px;
+    transition: 320ms;
+    height: 45px;
+    line-height: inherit;
+  }
+  ui-checkbox {
+    float: left;
+    width: 45px;
+    height: 45px;
+    line-height: inherit;
+  }
+  i.icon-remove {
+    width: 45px;
+    height: 45px;
+    line-height: inherit;
+    margin-right: 0;
+    transition: 320ms;
+    float: right;
+    color: transparent;
+    border-left:  1px solid transparent;
+  }
+  ui-checkbox, ui-checkbox:not([disabled]):hover, ui-checkbox:focus {
+    background: transparent;
+    text-shadow: none;
+    background-image: none;
+    box-shadow: none;
+    transition: 320ms;
+    color: #333;
+    &:after {
+      color: inherit
+    }
+    &[checked] {
+      color: #ccc;
+    }
+  }
+}
+ui-button:before, ui-cell:before {
+  content: "";
+  opacity: 0.99;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+ui-grid {
+  margin-bottom: 10px;
+}
+ui-grid ui-cell {
+  position: relative;
+  text-align: center;
+  font-size: 45px;
+  border-radius: 3px;
+  i {
+    border: none !important;
+  }
+  &.selected {
+    background: #fff;
+  }
+}

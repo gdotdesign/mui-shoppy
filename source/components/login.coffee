@@ -1,6 +1,6 @@
-class Login extends Component
+class Login extends UI.View
   @TAGNAME: 'login'
-  markup: [
+  @MARKUP: [
     {
       form: UI.Form.promise({},[
         {email: UI.Email.promise({name: 'email', required: 'true', placeholder: 'Email'})},

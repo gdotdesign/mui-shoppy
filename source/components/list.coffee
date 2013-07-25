@@ -1,23 +1,11 @@
 #= require ./item
 
-class List extends Component
+class List extends UI.View
   @TAGNAME: 'list'
-  markup: [
+  @MARKUP: [
     UI.promiseElement('div',{},[
       UI.Button.promise({name:'logout',type:"info"},[UI.promiseElement('i',{class: 'icon-signout'})])
-      {select: UI.Select.promise({},[
-        UI.Label.promise(),
-        UI.Dropdown.promise({},[
-          UI.Option.promise({value: ''},['All'])
-          UI.Option.promise({value: 'drink'},['Drinks'])
-          UI.Option.promise({value: 'food'},['Food'])
-          UI.Option.promise({value: 'gift'},['Gifts'])
-          UI.Option.promise({value: 'electronics'},['Electronics'])
-          UI.Option.promise({value: 'games'},['Games'])
-          UI.Option.promise({value: 'storage'},['Storage'])
-          UI.Option.promise({value: 'favorite'},['Favorites'])
-        ])
-      ])}
+      {select: UI.Select.promise({})}
       UI.Button.promise({name:'add',type:'danger'},[UI.promiseElement('i',{class: 'icon-plus'})])
       UI.Button.promise({name:'filter',type:'warning'},[UI.promiseElement('i',{class: 'icon-filter'})])
     ])
@@ -50,6 +38,10 @@ class List extends Component
     @select.label.textContent = "All"
     @added = @added.bind @
     @removed = @removed.bind @
+
+    @select.dropdown.appendChild UI.Option.promise({value: ''},['All'])()
+    for key, value of CATEGORIES
+      @select.dropdown.appendChild UI.Option.promise({value: key},[value.label])()
 
   empty: ->
     @body.innerHTML = ''

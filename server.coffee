@@ -12,6 +12,10 @@ environment = new Mincer.Environment()
 environment.appendPath('static')
 environment.appendPath('source')
 environment.appendPath('stylesheets')
+environment.appendPath('mui/core')
+environment.appendPath('mui/components')
+environment.appendPath('mui/polyfills')
+environment.appendPath('mui/themes/default')
 
 app = connect()
 app.use "/", connect.static process.cwd()+"/static"

@@ -1,22 +1,14 @@
 #= require ./list
 #= require ./login
 
-class Application extends Component
+class Application extends UI.View
   @TAGNAME: 'application'
-  markup: [
+  @MARKUP: [
     {pager: UI.Pager.promise({},[
       UI.Page.promise({name: 'main'},[{list: List.promise()}])
       UI.Page.promise({name: 'add'},[
         UI.Form.promise({},[
-          UI.Grid.promise({columns: 3},[
-            UI.Cell.promise({category: 'food'},[ UI.promiseElement('i',{class: 'icon-food'}) ])
-            UI.Cell.promise({category: 'drink'},[ UI.promiseElement('i',{class: 'icon-glass'}) ])
-            UI.Cell.promise({category: 'gift'},[ UI.promiseElement('i',{class: 'icon-gift'}) ])
-            UI.Cell.promise({category: 'electronics'},[ UI.promiseElement('i',{class: 'icon-desktop'}) ])
-            UI.Cell.promise({category: 'games'},[ UI.promiseElement('i',{class: 'icon-gamepad'}) ])
-            UI.Cell.promise({category: 'storage'},[ UI.promiseElement('i',{class: 'icon-archive'}) ])
-            UI.Cell.promise({category: 'favorite'},[ UI.promiseElement('i',{class: 'icon-heart'}) ])
-          ])
+          {grid: UI.Grid.promise({columns: 3})}
           {name: UI.Text.promise({placeholder: 'What?'})}
           {quantity: UI.Number.promise({placeholder: 'How many?'})}
           UI.Button.promise({type: 'danger', action: 'add'},['Add'])
@@ -81,6 +73,9 @@ class Application extends Component
   initialize: ->
     super
     @setAttribute 'loading', true
+
+    for key, value of CATEGORIES
+      @grid.appendChild UI.Cell.promise({category: key},[ UI.promiseElement('i',{class: value.icon}) ])()
 
   navigate: (e)->
     @resetAdd() if e.page is 'add'

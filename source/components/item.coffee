@@ -1,6 +1,6 @@
-class Item extends Component
+class Item extends UI.View
   @TAGNAME: 'item'
-  markup: [
+  @MARKUP: [
     { checkbox : UI.Checkbox.promise()  }
     UI.promiseElement('i',{class: 'icon-sign-blank'})
     { label    : UI.Label.promise()     }

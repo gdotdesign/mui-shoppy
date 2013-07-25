@@ -34,9 +34,9 @@ class Application extends UI.View
     'action [action=back]' : 'main'
     'action ui-cell'       : 'select'
 
-  main: -> @pager.change 'main'
-  logout: -> @login.logout()
-  init: -> @login.start()
+  main   : -> @pager.change 'main'
+  logout : -> @login.logout()
+  init   : -> @login.start()
 
   select: (e)->
     el.classList.remove('selected') for el in @querySelectorAll('.selected')
@@ -75,7 +75,7 @@ class Application extends UI.View
     @setAttribute 'loading', true
 
     for key, value of CATEGORIES
-      @grid.appendChild UI.Cell.promise({category: key},[ UI.promiseElement('i',{class: value.icon}) ])()
+      @grid.appendChild UI.Cell.promise({category: key},[ UI.promiseElement('i',{class: value.icon})])()
 
   navigate: (e)->
     @resetAdd() if e.page is 'add'

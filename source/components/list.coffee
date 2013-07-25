@@ -23,15 +23,13 @@ class List extends UI.View
     @querySelector('[name=filter]').toggleAttribute 'toggled', !!value
     @toggleAttribute 'filtered', !!value
 
-  add: ->    @fireEvent 'navigate', {page: 'add'}
-  logout: -> @fireEvent 'logout', {page: 'login'}
-  toggleFilter: -> @filter = !@filter
+  add          : -> @fireEvent 'navigate', {page: 'add'}
+  logout       : -> @fireEvent 'logout', {page: 'login'}
+  toggleFilter : -> @filter = !@filter
 
   filterCategory: ->
-    if @select.value is ''
-      @removeAttribute 'category'
-    else
-      @setAttribute 'category', @select.value
+    return @removeAttribute 'category' unless @select.value
+    @setAttribute 'category', @select.value
 
   initialize: ->
     super

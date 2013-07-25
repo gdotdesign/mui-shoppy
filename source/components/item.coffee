@@ -28,16 +28,12 @@ class Item extends UI.View
     'action i.icon-remove': 'remove'
     'change ui-checkbox': 'change'
 
-  remove: ->
-    @ref.set null
-
-  change: ->
-    @ref.child('done').set @done
+  remove : -> @ref.set null
+  change : -> @ref.child('done').set @done
+  init   : (@ref)-> @ref.on 'value', @update.bind(@)
 
   update: (snapshot)->
     data = snapshot.val()
     return unless data
     {@name, @quantity, @category, @done} = data
 
-  init: (@ref)->
-    @ref.on 'value', @update.bind(@)

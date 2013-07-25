@@ -5,8 +5,9 @@ exec "rm -rf release"
 exec "mkdir release"
 exec "mkdir release/assets"
 exec "cp -r static/* release"
-UglifyJS = require("uglify-js");
 
+UglifyJS = require("uglify-js")
+cleanCSS = require('clean-css')
 connect      = require("connect")
 Mincer       = require("mincer")
 autoprefixer = require('autoprefixer')
@@ -29,4 +30,4 @@ environment.appendPath('mui/themes/default')
 environment.findAsset('shoppy.js').compile (err, asset) ->
   fs.writeFileSync('release/assets/shoppy.js', UglifyJS.minify(asset.toString(), {fromString: true}).code, 'utf-8')
   environment.findAsset('shoppy.css').compile (err, asset) ->
-    fs.writeFileSync('release/assets/shoppy.css', asset.toString(), 'utf-8')
+    fs.writeFileSync('release/assets/shoppy.css', cleanCSS.process(asset.toString(),{removeEmpty: true}), 'utf-8')

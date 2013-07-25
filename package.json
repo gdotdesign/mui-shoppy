@@ -21,7 +21,8 @@
     "mincer"              : "0.4.6",
     "connect"             : "2.8.3",
     "autoprefixer"        : "0.5.20130629",
-    "uglify-js"           : "*"
+    "uglify-js"           : "*",
+    "clean-css"           : "*"
   },
   "scripts": {
     "test": "casperjs test/*",

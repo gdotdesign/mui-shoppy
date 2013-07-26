@@ -1,5 +1,10 @@
 #= require 'theme.scss'
 
+ui-notification {
+  position: fixed;
+  z-index: 9999;
+  text-align: center;
+}
 body {
   background: #eee;
   color: #333;

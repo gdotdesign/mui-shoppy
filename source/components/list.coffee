@@ -54,6 +54,7 @@ class List extends UI.View
 
   removed: (snapshot)->
     @body.removeChild @body.querySelector("[id='#{snapshot.name()}']")
+    @fireEvent 'notify', {message: 'Item removed...', _type: 'info'}
 
   init: (@ref)->
     @ref.on 'child_added', @added

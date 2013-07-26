@@ -4,6 +4,7 @@
 class Application extends UI.View
   @TAGNAME: 'application'
   @MARKUP: [
+    { notification: UI.Notification.promise({horizontal: 'center', vertical: 'bottom'}) }
     {pager: UI.Pager.promise({},[
       UI.Page.promise({name: 'main'},[{list: List.promise()}])
       UI.Page.promise({name: 'add'},[
@@ -33,11 +34,14 @@ class Application extends UI.View
     'action [action=add]'  : 'add'
     'action [action=back]' : 'main'
     'action ui-cell'       : 'select'
+    'notify'               : 'notify'
 
   main   : -> @pager.change 'main'
   logout : -> @login.logout()
   init   : -> @login.start()
 
+  notify: (e)->
+    @notification.push e.message, e._type
   select: (e)->
     el.classList.remove('selected') for el in @querySelectorAll('.selected')
     e.target.classList.add 'selected'
@@ -46,7 +50,9 @@ class Application extends UI.View
     return unless @name.value
     category = @querySelector('.selected')?.getAttribute('category') or null
     data = {done: false, name: @name.value, category: category, quantity: @quantity.value}
-    REF.child(@user.id).push data, => @pager.change 'main'
+    REF.child(@user.id).push data, =>
+      @pager.change 'main'
+      @notification.push 'Item added...', 'info'
 
   reset: ->
     @list.select.value = ""

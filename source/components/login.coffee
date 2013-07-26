@@ -60,7 +60,7 @@ class Login extends UI.View
     document.body.setAttribute('ready','true')
     @loading = false
     if error
-      alert(error)
+      @fireEvent 'notify', {message: error, _type: 'danger'}
     else
       @reset()
       if user
